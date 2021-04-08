@@ -10,8 +10,8 @@
  *
  */
 function deleteDigit(n) {
-  let num = Math.min(...n.toString().split('').map(Number));
-  let minIndex = n.toString().split('').indexOf(String(num));
+  const num = Math.min(...n.toString().split('').map(Number));
+  const minIndex = n.toString().split('').indexOf(String(num));
   return +n
     .toString()
     .split('')

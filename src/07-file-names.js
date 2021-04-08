@@ -14,12 +14,12 @@
  *
  */
 function renameFiles(names) {
-  let obj = {};
-  let recopyNames = [];
+  const obj = {};
+  const recopyNames = [];
   names.forEach((name) => {
     if (recopyNames.includes(name)) {
       obj[name] = obj[name] || 1;
-      let newName = name + `(${obj[name]})`;
+      const newName = `${name}(${obj[name]})`;
       recopyNames.push(newName);
       obj[name]++;
     } else {

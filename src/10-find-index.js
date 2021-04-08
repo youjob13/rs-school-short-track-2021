@@ -12,12 +12,14 @@
  *
  */
 function findIndex(array, value) {
-  let index = Math.floor(array.length - 1 / 2);
-  return array[index] === value
-    ? index
-    : array[index] <= value
-    ? findIndex(array.slice(index, array.length), value)
-    : findIndex(array.slice(0, index), value);
+  const index = Math.floor(array.length - 1 / 2);
+  if (array[index] === value) {
+    return index;
+  }
+  if (array[index] <= value) {
+    return findIndex(array.slice(index, array.length), value);
+  }
+  return findIndex(array.slice(0, index), value);
 }
 
 module.exports = findIndex;

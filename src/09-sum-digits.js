@@ -11,7 +11,7 @@
  *
  */
 function getSumOfDigits(n) {
-  let res = String(n)
+  const res = String(n)
     .split('')
     .reduce((acc, digital) => acc + +digital, 0);
   return res > 9 ? getSumOfDigits(res) : res;
