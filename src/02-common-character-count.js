@@ -38,7 +38,7 @@ function getCommonCharacterCount(/* s1, s2 */) {
   // }
 
   // return res;
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 module.exports = getCommonCharacterCount;
