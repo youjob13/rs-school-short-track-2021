@@ -13,7 +13,6 @@ const ListNode = require('../extensions/list-node');
 
 class Queue {
   constructor() {
-    this.queue = null;
     this.head = null;
   }
 
@@ -22,9 +21,13 @@ class Queue {
   }
 
   enqueue(element) {
-    const node = new ListNode(element);
-    node.next = this.head;
-    this.head = node;
+    const newNode = new ListNode(element);
+    if (!this.head) {
+      this.head = newNode;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
     return this.head;
   }
 
@@ -32,5 +35,9 @@ class Queue {
     throw new Error('Not implemented');
   }
 }
-
+// const obj = new Queue();
+// obj.enqueue(3);
+// console.log(obj.enqueue(4));
+// obj.dequeue();
+// console.log(obj.enqueue(2));
 module.exports = Queue;

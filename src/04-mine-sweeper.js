@@ -21,8 +21,50 @@
  *  [1, 1, 1]
  * ]
  */
-function minesweeper(/* matrix */) {
-  throw new Error('Not implemented');
+function minesweeper(matrix) {
+  const matrixField = {};
+  const res = [];
+  matrix.forEach((elem, index, arr) => {
+    elem.forEach((item, i) => {
+      matrixField[`${index}${i}`] = matrixField[`${index}${i}`] || 0;
+      if (item) {
+        if (elem.length - 1 >= i + 1) {
+          matrixField[`${index}${i + 1}`] = ++matrixField[`${index}${i + 1}`] || 1;
+        }
+        if (arr.length - 1 >= index + 1) {
+          matrixField[`${index + 1}${i}`] = ++matrixField[`${index + 1}${i}`] || 1;
+        }
+        if (index - 1 >= 0) {
+          matrixField[`${index - 1}${i}`] = ++matrixField[`${index - 1}${i}`] || 1;
+        }
+        if (i - 1 >= 0) {
+          matrixField[`${index}${i - 1}`] = ++matrixField[`${index}${i - 1}`] || 1;
+        }
+        if (i - 1 >= 0 && index - 1 >= 0) {
+          matrixField[`${index - 1}${i - 1}`] = ++matrixField[`${index - 1}${i - 1}`] || 1;
+        }
+        if (i + 1 >= 0 && index - 1 >= 0) {
+          matrixField[`${index + 1}${i - 1}`] = ++matrixField[`${index + 1}${i - 1}`] || 1;
+        }
+        if (i + 1 >= 0 && index + 1 >= 0) {
+          matrixField[`${index + 1}${i + 1}`] = ++matrixField[`${index + 1}${i + 1}`] || 1;
+        }
+        if (i - 1 >= 0 && index + 1 >= 0) {
+          matrixField[`${index - 1}${i + 1}`] = ++matrixField[`${index - 1}${i + 1}`] || 1;
+        }
+      }
+    });
+  });
+  for (let i = 0; i < matrix.length; i++) {
+    let resStr = [];
+    for (let j = 0; j < matrix[i].length; j++) {
+      resStr.push(matrixField[`${i}${j}`]);
+    }
+    res.push(resStr);
+    resStr = [];
+  }
+
+  return res;
 }
 
 module.exports = minesweeper;
