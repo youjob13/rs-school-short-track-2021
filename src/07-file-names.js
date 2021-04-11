@@ -19,9 +19,8 @@ function renameFiles(names) {
   names.forEach((name) => {
     if (recopyNames.includes(name)) {
       obj[name] = obj[name] || 1;
-      const newName = `${name}(${obj[name]})`;
+      const newName = `${name}(${obj[name]++})`;
       recopyNames.push(newName);
-      obj[name]++;
     } else {
       recopyNames.push(name);
     }

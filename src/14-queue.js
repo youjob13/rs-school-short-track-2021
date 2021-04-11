@@ -13,31 +13,41 @@ const ListNode = require('../extensions/list-node');
 
 class Queue {
   constructor() {
-    this.head = null;
+    this.front = null;
+    this.end = null;
+    this.queue = null;
+    this.length = 0;
   }
 
   get size() {
-    throw new Error('Not implemented');
+    return this.length;
   }
 
   enqueue(element) {
     const newNode = new ListNode(element);
-    if (!this.head) {
-      this.head = newNode;
+    if (!this.queue) {
+      this.front = newNode;
+      this.end = newNode;
+      this.queue = newNode;
     } else {
-      newNode.next = this.head;
-      this.head = newNode;
+      newNode.next = this.queue;
+      this.queue = newNode;
+      this.end = newNode;
     }
-    return this.head;
+    this.length++;
+    return this.queue;
   }
 
   dequeue() {
-    throw new Error('Not implemented');
+    let outElem = null;
+    if (this.queue) {
+      outElem = this.front.value;
+      this.front = this.queue.next;
+      this.queue = this.front;
+      this.length--;
+    }
+    return outElem;
   }
 }
-// const obj = new Queue();
-// obj.enqueue(3);
-// console.log(obj.enqueue(4));
-// obj.dequeue();
-// console.log(obj.enqueue(2));
+
 module.exports = Queue;
