@@ -1,6 +1,3 @@
-# Deploy
-https://youjob13.github.io/spaceX/
-
 # The Rolling Scopes School. Short Track 2021.
 
 ## Task
